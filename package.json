@@ -34,6 +34,7 @@
     }
   },
   "scripts": {
+    "test": "test",
     "build": "tsup",
     "release": "semantic-release",
     "release:dry": "semantic-release --dry-run"
