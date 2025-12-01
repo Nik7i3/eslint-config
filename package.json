@@ -22,9 +22,20 @@
     "TypeScript"
   ],
   "type": "module",
-  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "test": "test",
+    "build": "tsup",
     "release": "semantic-release",
     "release:dry": "semantic-release --dry-run"
   },
@@ -54,6 +65,7 @@
     "eslint": "^9.39.1",
     "prettier": "^3.7.3",
     "semantic-release": "^25.0.2",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   },
   "packageManager": "yarn@4.12.0"
