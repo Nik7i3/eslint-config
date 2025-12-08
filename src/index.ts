@@ -6,6 +6,7 @@ import type { ImportXConfigParams } from "./configs/importX";
 import importXConfig from "./configs/importX";
 import unicornConfig from "./configs/unicorn";
 import reactConfig from "./configs/react";
+import prettierConfig from "./configs/prettier";
 
 type Platform = "web" | "node";
 
@@ -51,6 +52,9 @@ export function createConfig(params: Params): ConfigWithExtends[] {
   if (configs.react) {
     final.push(...reactConfig());
   }
+
+  // Prettier
+  final.push(...prettierConfig());
 
   if (params.extends !== undefined) {
     final.push(...params.extends);
