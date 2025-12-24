@@ -10,7 +10,8 @@ export default function unicornConfig(): Config[] {
     {
       rules: {
         "unicorn/filename-case": ["off"],
-        "unicorn/no-null": ["off"]
+        "unicorn/no-null": ["off"],
+        "unicorn/prevent-abbreviations": ["off"]
       }
     }
   ]);
