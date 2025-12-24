@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/Nik7i3/eslint-config/compare/v1.1.0...v1.1.1) (2025-12-24)
+
+### Bug Fixes
+
+* disable unicorn abbr prevention ([284b4c1](https://github.com/Nik7i3/eslint-config/commit/284b4c11a7d6b29d225e6ea95a69e49d1a7f9b42))
+
 ## [1.1.0](https://github.com/Nik7i3/eslint-config/compare/v1.0.0...v1.1.0) (2025-12-08)
 
 ### Features
