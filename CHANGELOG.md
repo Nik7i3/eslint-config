@@ -1,3 +1,13 @@
+## [1.2.0](https://github.com/Nik7i3/eslint-config/compare/v1.1.1...v1.2.0) (2025-12-27)
+
+### Features
+
+* improve codebase, disable ts project and remove languageOptions ([4f33c8c](https://github.com/Nik7i3/eslint-config/commit/4f33c8c79157a4fbd530ead8bf0e5ff980a58778))
+
+### Bug Fixes
+
+* disable ts prefer-optional-chain rule ([c72a20f](https://github.com/Nik7i3/eslint-config/commit/c72a20f376b27d71f025ba8a76a352efb751d5d0))
+
 ## [1.1.1](https://github.com/Nik7i3/eslint-config/compare/v1.1.0...v1.1.1) (2025-12-24)
 
 ### Bug Fixes
