@@ -5,8 +5,12 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 
-export default function reactConfig(): Config[] {
-  return defineConfig([
+interface Params {
+  platform: "recommended" | "vite" | "next";
+}
+
+export default function reactConfig(params: Params): Config[] {
+  return defineConfig(
     {
       files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,tsx,mtsx}"],
       ...pluginReact.configs.flat["recommended"]
@@ -17,9 +21,17 @@ export default function reactConfig(): Config[] {
       ...pluginReact.configs.flat["jsx-runtime"]
     },
 
+    // React Hooks
     reactHooks.configs.flat["recommended-latest"],
-    reactRefresh.configs.vite, // Note: Only for Vite
 
+    // React Refresh
+    params.platform === "vite"
+      ? reactRefresh.configs.vite
+      : params.platform === "next"
+        ? reactRefresh.configs.next
+        : reactRefresh.configs.recommended,
+
+    // Rules
     {
       files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,tsx,mtsx}"],
       settings: {
@@ -40,10 +52,5 @@ export default function reactConfig(): Config[] {
         }
       }
     }
-
-    // Rules
-    // {
-    //   rules: {}
-    // }
-  ]);
+  );
 }

@@ -12,9 +12,8 @@ type Platform = "web" | "node";
 
 interface Params {
   platform: Platform;
-  languageOptions: ConfigWithExtends["languageOptions"];
   configs?: {
-    typescript?: boolean;
+    typescript?: boolean | { tsconfigRootDir?: string };
     importX?: boolean | ImportXConfigParams;
     unicorn?: boolean;
     react?: boolean;
@@ -33,10 +32,16 @@ export function createConfig(params: Params): ConfigWithExtends[] {
 
   const final: ConfigWithExtends[] = [...javascriptConfig()];
 
-  if (configs.typescript) {
-    final.push(...typescriptConfig());
+  // Typescript
+  if (configs.typescript !== false) {
+    final.push(
+      ...typescriptConfig(
+        typeof configs.typescript !== "boolean" ? configs.typescript : {}
+      )
+    );
   }
 
+  // Import X
   if (configs.importX !== false) {
     final.push(
       ...importXConfig(
@@ -45,12 +50,15 @@ export function createConfig(params: Params): ConfigWithExtends[] {
     );
   }
 
+  // Unicorn
   if (configs.unicorn) {
     final.push(...unicornConfig());
   }
 
+  // React
   if (configs.react) {
-    final.push(...reactConfig());
+    // Note: Only Vite for now
+    final.push(...reactConfig({ platform: "vite" }));
   }
 
   // Prettier
@@ -70,12 +78,7 @@ export function createConfig(params: Params): ConfigWithExtends[] {
               ...globals.serviceworker,
               ...globals.browser
             }
-          : globals.node,
-      ...params.languageOptions,
-      parserOptions: {
-        projectService: true,
-        ...params.languageOptions?.parserOptions
-      }
+          : globals.node
     }
   });
 

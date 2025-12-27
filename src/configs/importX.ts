@@ -9,14 +9,14 @@ export interface ImportXConfigParams {
 }
 
 export default function importXConfig(params: ImportXConfigParams): Config[] {
-  return defineConfig([
+  return defineConfig(
     // @ts-ignore
     importX.flatConfigs.recommended,
     // @ts-ignore
     importX.flatConfigs.typescript,
 
     {
-      files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+      files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,tsx,mtsx}"],
       settings: {
         "import-x/resolver-next": [
           createTypeScriptImportResolver({
@@ -29,6 +29,7 @@ export default function importXConfig(params: ImportXConfigParams): Config[] {
 
     // Rules
     {
+      files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,tsx,mtsx}"],
       rules: {
         "import-x/consistent-type-specifier-style": [
           "error",
@@ -36,5 +37,5 @@ export default function importXConfig(params: ImportXConfigParams): Config[] {
         ]
       }
     }
-  ]);
+  );
 }

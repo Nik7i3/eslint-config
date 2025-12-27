@@ -3,7 +3,7 @@ import { defineConfig } from "eslint/config";
 import js from "@eslint/js";
 
 export default function javascriptConfig(): Config[] {
-  return defineConfig([
+  return defineConfig(
     {
       files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,tsx,mtsx}"],
       plugins: { js },
@@ -12,6 +12,7 @@ export default function javascriptConfig(): Config[] {
 
     // Rules
     {
+      files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,tsx,mtsx}"],
       rules: {
         // Possible Problems
         "array-callback-return": ["error"],
@@ -36,5 +37,5 @@ export default function javascriptConfig(): Config[] {
         ]
       }
     }
-  ]);
+  );
 }

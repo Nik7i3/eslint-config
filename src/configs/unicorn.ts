@@ -3,16 +3,17 @@ import { defineConfig } from "eslint/config";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 
 export default function unicornConfig(): Config[] {
-  return defineConfig([
+  return defineConfig(
     eslintPluginUnicorn.configs.recommended,
 
     // Rules
     {
+      files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,tsx,mtsx}"],
       rules: {
         "unicorn/filename-case": ["off"],
         "unicorn/no-null": ["off"],
         "unicorn/prevent-abbreviations": ["off"]
       }
     }
-  ]);
+  );
 }
