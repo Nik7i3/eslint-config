@@ -28,6 +28,7 @@ export default function typescriptConfig(params: Params): Config[] {
       files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,tsx,mtsx}"],
       rules: {
         "@typescript-eslint/prefer-optional-chain": ["off"],
+        "@typescript-eslint/prefer-nullish-coalescing": ["off"],
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
           "error",
